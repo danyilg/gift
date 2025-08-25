@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перекидуємо на ютуб...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: #EF4444;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex flex-col items-center justify-center text-white">
+    <div class="text-center p-8 max-w-md mx-auto">
+        <div class="mb-6">
+            <div class="loader mx-auto"></div>
+        </div>
+        <h1 class="text-3xl font-bold mb-4 text-red-500">Перекидаємо на ютуб...</h1>
+        <p class="mb-6 text-gray-300"> </p>
+        <div class="bg-gray-800 rounded-lg p-4 mb-6">
+            <div class="flex items-center">
+                <div class="bg-red-500 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="font-semibold">Відео в ютуб</h2>
+                    <p class="text-sm text-gray-400">Ми перекинемо вас на Ютуб через кілька секунд...</p>
+                </div>
+            </div>
+        </div>
+        <p class="text-sm text-gray-500">Якщо вас не перекинуло, натисніть, <a href="https://www.youtube.com/watch?v=rnjbemXGNmw" class="text-red-400 hover:underline">сюди</a>.</p>
+    </div>
+
+    <script>
+        // Redirect after 3 seconds
+        setTimeout(function() {
+            window.location.href = "https://www.youtube.com/watch?v=rnjbemXGNmw";
+        }, 3000);
+        
+        // Optional: Countdown timer
+        let seconds = 3;
+        const countdownElement = document.createElement('div');
+        countdownElement.className = 'text-gray-500 text-sm mt-4';
+        document.querySelector('.text-center').appendChild(countdownElement);
+        
+        const timer = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = `Redirecting in ${seconds} second${seconds !== 1 ? 's' : ''}...`;
+            
+            if (seconds <= 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
